@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aly.bar</title>
+    <style>
+        /* 1. Matrix Dot-Matrix / Mesh Background instead of stripes */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #08080a;
+            background-image: 
+                radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+                radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #b0b3b8;
+            font-family: 'Consolas', 'Courier New', monospace; /* Sharp terminal font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* 2. Structured Dashboard Terminal Box */
+        .terminal-box {
+            background-color: #0e1013;
+            border: 1px solid #22262c;
+            border-radius: 4px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        /* Fake top bar to look like an app window */
+        .terminal-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 24px;
+            background-color: #161a22;
+            border-bottom: 1px solid #22262c;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            gap: 6px;
+        }
+
+        .dot { width: 6px; height: 6px; border-radius: 50%; background-color: #333; }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-top: 15px;
+            margin-bottom: 2px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .meta-line {
+            font-size: 0.85rem;
+            color: #5c6370; /* Muted gray-blue */
+            margin-bottom: 25px;
+        }
+
+        .bio {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #abb2bf;
+            text-align: left;
+            border-left: 2px solid #3e4452;
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* 3. Cyberpunk Icy Cyan / Mint Accent Links */
+        .nav-links {
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #56b6c2; /* Icy teal/cyan */
+            text-decoration: none;
+            padding: 2px 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #111;
+            background-color: #56b6c2; /* Highlights text on hover */
+        }
+
+        /* 4. Compact Pixel Badge Section */
+        .badge-container {
+            border-top: 1px dashed #22262c;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge-container img {
+            width: 88px;
+            height: 31px;
+            image-rendering: pixelated;
+            opacity: 0.7;
+            filter: grayscale(20%);
+            transition: all 0.2s ease;
+        }
+
+        .badge-container img:hover {
+            opacity: 1;
+            filter: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal-box">
+        <!-- Window Details -->
+        <div class="terminal-header">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <h1>aly</h1>
+        <div class="meta-line">he/him</div>
+        
+        <p class="bio">
+            hi im aly! i like roblox revivals and i run a revival!
+        </p>
+        
+        <div class="nav-links">
+            <a href="https://mikuna.lol">mikuna</a> &middot; 
+            <a href="https://discord.com/users/1243399048531152937">discord</a> &middot; 
+            <a href="mailto:simultaneouses@waifu.club">email</a> &middot; 
+        </div>
+
+        <!-- Distinct Pixel Badges -->
+        <div class="badge-container">
+            <a href="https://aly.bar"><img src="https://aly.bar/button.png" alt="aly"></a>
+        </div>
+    </div>
+
+</body>
+</html>
