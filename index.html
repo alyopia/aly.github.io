@@ -10,185 +10,363 @@
             box-sizing: border-box;
         }
 
+        html,
         body {
             margin: 0;
+            min-height: 100%;
+        }
+
+        body {
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 24px;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            color: #111;
 
             background:
-                radial-gradient(circle at 50% -20%, #252525 0%, transparent 45%),
-                #0b0b0d;
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.13) 25%,
+                    transparent 25%
+                ) 0 0 / 8px 8px,
+                linear-gradient(
+                    315deg,
+                    rgba(255,255,255,.08) 25%,
+                    transparent 25%
+                ) 0 0 / 8px 8px,
+                #3a8bdc;
 
-            color: #fff;
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+            background-attachment: fixed;
+            padding: 35px 15px 70px;
         }
 
-        .card {
+        .window {
             width: 100%;
-            max-width: 620px;
+            max-width: 720px;
+            margin: 0 auto;
 
-            padding: 42px;
+            background: #ece9d8;
 
-            background: rgba(18, 18, 21, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
+            border: 1px solid #003c9d;
+            border-radius: 8px 8px 4px 4px;
 
             box-shadow:
-                0 25px 70px rgba(0, 0, 0, 0.55),
-                inset 0 1px 0 rgba(255, 255, 255, 0.03);
-
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+                3px 4px 0 rgba(0,0,0,.25),
+                0 15px 45px rgba(0,0,0,.35);
         }
 
-        .top {
+        .titlebar {
+            height: 36px;
+
             display: flex;
             align-items: center;
+
+            padding: 4px 6px 4px 10px;
+
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+
+            border-radius: 7px 7px 0 0;
+
+            background:
+                linear-gradient(
+                    #5da9ff 0%,
+                    #2878dc 45%,
+                    #0759c5 55%,
+                    #0b4ca5 100%
+                );
+
+            text-shadow: 1px 1px #174c91;
+        }
+
+        .title-icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 7px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 15px;
+
+            background: linear-gradient(#fff, #d7e9ff);
+            border: 1px solid #174d9c;
+            border-radius: 3px;
+
+            color: #0759c5;
+            text-shadow: none;
+        }
+
+        .title-text {
+            flex: 1;
+        }
+
+        .window-buttons {
+            display: flex;
+            gap: 3px;
+        }
+
+        .window-button {
+            width: 23px;
+            height: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+
+            border: 1px solid #174d9c;
+            border-radius: 3px;
+
+            background: linear-gradient(#73b7ff, #1664c5);
+
+            box-shadow:
+                inset 1px 1px rgba(255,255,255,.5),
+                1px 1px rgba(0,0,0,.2);
+        }
+
+        .content {
+            padding: 28px;
+        }
+
+        .welcome {
+            display: flex;
             gap: 18px;
-            margin-bottom: 28px;
+            align-items: center;
+
+            padding: 15px;
+
+            background: #fff;
+
+            border: 1px solid #b7b7b7;
+            border-radius: 4px;
+
+            box-shadow:
+                inset 1px 1px white,
+                1px 1px rgba(0,0,0,.15);
+
+            margin-bottom: 18px;
         }
 
         .avatar {
-            width: 64px;
-            height: 64px;
-
-            border-radius: 16px;
-
-            background: linear-gradient(135deg, #25252a, #151519);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            font-size: 25px;
-            font-weight: 700;
-            color: #fff;
+            font-family: "Courier New", monospace;
+            font-size: 34px;
+            font-weight: bold;
 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+            color: white;
+
+            border: 3px solid white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2b7bdc,
+                    #074da5
+                );
+
+            box-shadow:
+                0 0 0 1px #4778a8,
+                3px 3px 0 rgba(0,0,0,.18);
+
+            image-rendering: pixelated;
         }
 
         h1 {
             margin: 0;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
+
+            color: #124f99;
+
+            font-size: 28px;
+            font-weight: bold;
+
+            text-shadow: 1px 1px white;
         }
 
-        .meta {
+        .subtitle {
             margin-top: 4px;
-            color: #77777f;
-            font-size: 0.9rem;
+            color: #666;
+            font-size: 12px;
         }
 
-        .bio {
-            margin: 0 0 30px;
+        .box {
+            margin-bottom: 18px;
 
-            color: #a5a5ad;
-            font-size: 0.98rem;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+
+            background: #fff;
+
+            box-shadow:
+                inset 1px 1px white,
+                1px 1px rgba(0,0,0,.12);
+        }
+
+        .box-title {
+            padding: 7px 10px;
+
+            color: #174b89;
+            font-size: 12px;
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    #e7f3ff,
+                    #c4ddf7
+                );
+
+            border-bottom: 1px solid #a7bfd9;
+        }
+
+        .box-body {
+            padding: 15px;
+
+            font-size: 13px;
             line-height: 1.7;
         }
 
         .links {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 34px;
+            gap: 9px;
         }
 
         .links a {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 9px;
 
-            padding: 13px 15px;
+            padding: 9px 11px;
 
-            color: #e9e9ec;
+            color: #003b8e;
             text-decoration: none;
 
-            background: #151519;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 11px;
+            font-size: 12px;
+            font-weight: bold;
 
-            font-size: 0.9rem;
-            transition:
-                transform 0.18s ease,
-                background 0.18s ease,
-                border-color 0.18s ease;
+            background:
+                linear-gradient(
+                    #ffffff,
+                    #e7e7e7
+                );
+
+            border: 1px solid #888;
+            border-radius: 3px;
+
+            box-shadow:
+                inset 1px 1px white,
+                1px 1px rgba(0,0,0,.2);
         }
 
-        .links a::after {
-            content: "↗";
-            color: #66666e;
-            transition: transform 0.18s ease;
+        .links a::before {
+            content: "▣";
+            color: #1465c0;
+            font-size: 13px;
         }
 
         .links a:hover {
-            background: #1c1c21;
-            border-color: rgba(255, 255, 255, 0.14);
-            transform: translateY(-2px);
+            color: white;
+
+            background:
+                linear-gradient(
+                    #64adff,
+                    #1766c5
+                );
+
+            border-color: #064797;
+
+            text-shadow: 1px 1px #174c91;
         }
 
-        .links a:hover::after {
-            transform: translate(2px, -2px);
-        }
+        .badges {
+            padding: 15px;
 
-        .badges-title {
-            color: #66666e;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 12px;
-        }
-
-        .badge-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            justify-content: center;
+            gap: 7px;
 
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            background: #f4f4f4;
+
+            border-top: 1px solid #ccc;
         }
 
-        .badge-container a {
+        .badges a {
             display: block;
-            border-radius: 5px;
-            overflow: hidden;
-            opacity: 0.7;
 
-            transition:
-                opacity 0.18s ease,
-                transform 0.18s ease;
+            padding: 1px;
+
+            background: #fff;
+
+            border: 1px solid #999;
+
+            box-shadow: 1px 1px rgba(0,0,0,.18);
         }
 
-        .badge-container a:hover {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
-
-        .badge-container img {
+        .badges img {
             display: block;
+
             width: 88px;
             height: 31px;
 
             image-rendering: pixelated;
         }
 
-        @media (max-width: 520px) {
-            .card {
-                padding: 28px 22px;
-                border-radius: 16px;
+        .badges a:hover {
+            border-color: #0759c5;
+            transform: translateY(-1px);
+        }
+
+        .statusbar {
+            height: 25px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 8px;
+
+            color: #555;
+            font-size: 10px;
+
+            border-top: 1px solid #aaa;
+
+            background: #ece9d8;
+        }
+
+        .status-section {
+            padding: 2px 12px;
+            border-right: 1px solid #c4c1b5;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px 7px 50px;
+            }
+
+            .content {
+                padding: 15px;
             }
 
             .links {
                 grid-template-columns: 1fr;
             }
 
-            h1 {
-                font-size: 1.8rem;
+            .welcome {
+                align-items: flex-start;
+            }
+
+            .window-buttons {
+                display: none;
             }
         }
     </style>
@@ -196,68 +374,307 @@
 
 <body>
 
-    <main class="card">
+    <main class="window">
 
-        <div class="top">
-            <div class="avatar">a</div>
+        <div class="titlebar">
+            <div class="title-icon">★</div>
 
-            <div>
-                <h1>aly</h1>
-                <div class="meta">he/him · aly.bar</div>
+            <div class="title-text">
+                aly.bar - Personal Homepage
+            </div>
+
+            <div class="window-buttons">
+                <div class="window-button">−</div>
+                <div class="window-button">□</div>
+                <div class="window-button">×</div>
             </div>
         </div>
 
-        <p class="bio">
-            hi im aly! i like roblox revivals and i run a revival.
-        </p>
+        <div class="content">
 
-        <div class="links">
-            <a href="https://dualblox.xyz" target="_blank">Dualblox</a>
+            <section class="welcome">
+                <div class="avatar">a</div>
 
-            <a href="https://discord.com" target="_blank">Discord</a>
+                <div>
+                    <h1>aly</h1>
 
-            <a href="mailto:simultaneouses@waifu.club">Email</a>
+                    <div class="subtitle">
+                        he/him | owner @ crexx
+                    </div>
+                </div>
+            </section>
 
-            <a href="https://cdn.discordapp.com/attachments/1532071082981462148/1555974428595068938/Screen_Recording_2026-10-02_at_8.26.33_PM.mov?backend=b2&ex=6ac716dc&is=6ac5c55c&hm=8e4bab7608f7f012e85f42d0e20fc4bdb12c357dff4efb6ea85d23e78cdfb2b8&">
-                comRBX nuked 10/2/26
-            </a>
+            <section class="box">
+
+                <div class="box-title">
+                    ★ About Me
+                </div>
+
+                <div class="box-body">
+                    hi im aly! i like roblox revivals and i run a revival.
+                    <br>
+
+                    <span style="color:#777;">
+                        thanks for stopping by :)
+                    </span>
+                </div>
+
+            </section>
+
+            <section class="box">
+
+                <div class="box-title">
+                    🔗 Links
+                </div>
+
+                <div class="box-body">
+
+                    <div class="links">
+
+                        <a
+                            href="https://dualblox.xyz"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            DualBlox
+                        </a>
+
+                        <a
+                            href="https://discord.com"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Discord
+                        </a>
+
+                        <a href="mailto:simultaneouses@waifu.club">
+                            Email
+                        </a>
+
+                        <a
+                            href="https://cdn.discordapp.com/attachments/1532071082981462148/1555974428595068938/Screen_Recording_2026-10-02_at_8.26.33_PM.mov?backend=b2&ex=6ac716dc&is=6ac5c55c&hm=8e4bab7608f7f012e85f42d0e20fc4bdb12c357dff4efb6ea85d23e78cdfb2b8&"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            comrbx nuke
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="box">
+
+                <div class="box-title">
+                    ★ Cool Sites
+                </div>
+
+                <div class="badges">
+
+                    <a href="https://aly.bar">
+                        <img
+                            src="https://aly.bar/button.png"
+                            alt="aly"
+                        >
+                    </a>
+
+                    <a
+                        href="https://mikuna.lol"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="https://aly.bar/crexxbutto.png"
+                            alt="crexx"
+                        >
+                    </a>
+
+                    <a
+                        href="https://sansy.shop"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="https://aly.bar/sansybutton.png"
+                            alt="sansy"
+                        >
+                    </a>
+
+                    <a
+                        href="https://ralsei.sbs"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="https://aly.bar/ralseibutton.png"
+                            alt="ralsei"
+                        >
+                    </a>
+
+                    <a
+                        href="https://meloro.cc.cd"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="https://aly.bar/melorobutton.png"
+                            alt="meloro"
+                        >
+                    </a>
+
+                    <a
+                        href="https://discord.gg/rblxrev"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <img
+                            src="https://aly.bar/tsrbutton.png"
+                            alt="tsr"
+                        >
+                    </a>
+
+                    <a href="#">
+                        <img
+                            src="https://anlucas.neocities.org/macmade-wht.gif"
+                            alt="madewithmac"
+                        >
+                    </a>
+
+                </div>
+
+            </section>
+
         </div>
 
-        <div class="badges-title">friends / sites</div>
+        <div class="statusbar">
 
-        <div class="badge-container">
+            <div class="status-section">
+                aly.bar
+            </div>
 
-            <a href="https://aly.bar">
-                <img src="https://aly.bar/button.png" alt="aly">
-            </a>
+            <div class="status-section">
+                online
+            </div>
 
-            <a href="https://mikuna.lol" target="_blank">
-                <img src="https://aly.bar/crexxbutto.png" alt="crexx">
-            </a>
-
-            <a href="https://sansy.shop" target="_blank">
-                <img src="https://aly.bar/sansybutton.png" alt="sansy">
-            </a>
-
-            <a href="https://ralsei.sbs" target="_blank">
-                <img src="https://aly.bar/ralseibutton.png" alt="ralsei">
-            </a>
-
-            <a href="https://meloro.cc.cd">
-                <img src="https://aly.bar/melorobutton.png" alt="meloro">
-            </a>
-
-            <a href="https://discord.gg/rblxrev">
-                <img src="https://aly.bar/tsrbutton.png" alt="tsr">
-            </a>
-
-            <a href="#">
-                <img src="https://anlucas.neocities.org/macmade-wht.gif" alt="madewithmac">
-            </a>
+            <div class="status-section">
+                ★ man frutiger aero is so good
+            </div>
 
         </div>
 
     </main>
+
+    <script>
+        (function () {
+            const cat = document.createElement("div");
+
+            let catX = 32;
+            let catY = 32;
+            let mouseX = 32;
+            let mouseY = 32;
+            let frame = 0;
+
+            const speed = 10;
+
+            const sprites = {
+                idle: [[-3, -3]],
+                alert: [[-7, -3]],
+                scratchSelf: [[-5, 0], [-6, 0], [-7, 0]],
+                N: [[-1, -2], [-1, -3]],
+                NE: [[0, -2], [0, -3]],
+                E: [[-3, 0], [-3, -1]],
+                SE: [[-5, -1], [-5, -2]],
+                S: [[-6, -3], [-7, -2]],
+                SW: [[-5, -3], [-6, -1]],
+                W: [[-4, -2], [-4, -3]],
+                NW: [[-1, 0], [-1, -1]]
+            };
+
+            cat.id = "oneko";
+            cat.setAttribute("aria-hidden", "true");
+
+            cat.style.position = "fixed";
+            cat.style.width = "32px";
+            cat.style.height = "32px";
+            cat.style.pointerEvents = "none";
+            cat.style.zIndex = "2147483647";
+            cat.style.imageRendering = "pixelated";
+            cat.style.backgroundImage =
+                "url('https://raw.githubusercontent.com/adryd325/oneko.js/14bab15a755d0e35cd4ae19c931d96d306f99f42/oneko.gif')";
+            cat.style.backgroundRepeat = "no-repeat";
+
+            cat.style.left = "16px";
+            cat.style.top = "16px";
+
+            document.body.appendChild(cat);
+
+            document.addEventListener("mousemove", function (event) {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+
+            function setSprite(name) {
+                const set = sprites[name] || sprites.idle;
+                const sprite = set[frame % set.length];
+
+                cat.style.backgroundPosition =
+                    (sprite[0] * 32) + "px " +
+                    (sprite[1] * 32) + "px";
+            }
+
+            function moveCat() {
+                const dx = catX - mouseX;
+                const dy = catY - mouseY;
+
+                const distance = Math.sqrt(
+                    dx * dx + dy * dy
+                );
+
+                if (distance > 48) {
+                    let direction = "";
+
+                    if (dy / distance > 0.5) {
+                        direction = "N";
+                    } else if (dy / distance < -0.5) {
+                        direction = "S";
+                    }
+
+                    if (dx / distance > 0.5) {
+                        direction += "W";
+                    } else if (dx / distance < -0.5) {
+                        direction += "E";
+                    }
+
+                    setSprite(direction);
+
+                    catX -= (dx / distance) * speed;
+                    catY -= (dy / distance) * speed;
+                } else {
+                    setSprite("idle");
+                }
+
+                catX = Math.max(
+                    16,
+                    Math.min(window.innerWidth - 16, catX)
+                );
+
+                catY = Math.max(
+                    16,
+                    Math.min(window.innerHeight - 16, catY)
+                );
+
+                cat.style.left = (catX - 16) + "px";
+                cat.style.top = (catY - 16) + "px";
+
+                frame++;
+            }
+
+            setSprite("idle");
+            setInterval(moveCat, 100);
+        })();
+    </script>
 
 </body>
 </html>
