@@ -4,158 +4,260 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>aly.bar</title>
+
     <style>
-       
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #111;
-            background-image: repeating-linear-gradient(-45deg,
-                #111 0px,
-                #111 12px,
-                #171717 12px,
-                #171717 24px);
-            color: #fff;
-            font-family: "Courier New", monospace;
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            padding: 24px;
+
+            background:
+                radial-gradient(circle at 50% -20%, #252525 0%, transparent 45%),
+                #0b0b0d;
+
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
         }
 
-        
-        .terminal-box {
-            background-color: #0e1013;
-            border: 1px solid #22262c;
-            border-radius: 4px;
-            padding: 30px;
-            max-width: 500px;
+        .card {
             width: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            position: relative;
+            max-width: 620px;
+
+            padding: 42px;
+
+            background: rgba(18, 18, 21, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
         }
 
-        
-        .terminal-header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 24px;
-            background-color: #161a22;
-            border-bottom: 1px solid #22262c;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
+        .top {
             display: flex;
             align-items: center;
-            padding-left: 10px;
-            gap: 6px;
+            gap: 18px;
+            margin-bottom: 28px;
         }
 
-        .dot { width: 6px; height: 6px; border-radius: 50%; background-color: #333; }
+        .avatar {
+            width: 64px;
+            height: 64px;
+
+            border-radius: 16px;
+
+            background: linear-gradient(135deg, #25252a, #151519);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+            font-weight: 700;
+            color: #fff;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+        }
 
         h1 {
-            font-size: 1.8rem;
-            color: #ffffff;
-            margin-top: 15px;
-            margin-bottom: 2px;
-            font-weight: normal;
-            letter-spacing: 1px;
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
         }
 
-        .meta-line {
-            font-size: 0.85rem;
-            color: #5c6370; 
-            margin-bottom: 25px;
+        .meta {
+            margin-top: 4px;
+            color: #77777f;
+            font-size: 0.9rem;
         }
 
         .bio {
-            font-size: 0.95rem;
+            margin: 0 0 30px;
+
+            color: #a5a5ad;
+            font-size: 0.98rem;
             line-height: 1.7;
-            color: #abb2bf;
-            text-align: left;
-            border-left: 2px solid #3e4452;
-            padding-left: 15px;
-            margin-bottom: 25px;
         }
 
-        
-        .nav-links {
-            margin-bottom: 30px;
-            font-size: 0.95rem;
+        .links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 34px;
         }
 
-        .nav-links a {
-            color: #56b6c2; 
+        .links a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 13px 15px;
+
+            color: #e9e9ec;
             text-decoration: none;
-            padding: 2px 6px;
-            transition: all 0.2s ease;
+
+            background: #151519;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 11px;
+
+            font-size: 0.9rem;
+            transition:
+                transform 0.18s ease,
+                background 0.18s ease,
+                border-color 0.18s ease;
         }
 
-        .nav-links a:hover {
-            color: #111;
-            background-color: #56b6c2; 
+        .links a::after {
+            content: "↗";
+            color: #66666e;
+            transition: transform 0.18s ease;
+        }
+
+        .links a:hover {
+            background: #1c1c21;
+            border-color: rgba(255, 255, 255, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .links a:hover::after {
+            transform: translate(2px, -2px);
+        }
+
+        .badges-title {
+            color: #66666e;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
         }
 
         .badge-container {
-            border-top: 1px dashed #22262c;
-            padding-top: 20px;
             display: flex;
-            justify-content: center;
-            gap: 8px;
             flex-wrap: wrap;
+            gap: 8px;
+
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .badge-container a {
+            display: block;
+            border-radius: 5px;
+            overflow: hidden;
+            opacity: 0.7;
+
+            transition:
+                opacity 0.18s ease,
+                transform 0.18s ease;
+        }
+
+        .badge-container a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
         }
 
         .badge-container img {
+            display: block;
             width: 88px;
             height: 31px;
+
             image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            opacity: 0.7;
-            filter: grayscale(20%);
-            transition: all 0.2s ease;
         }
 
-        .badge-container img:hover {
-            opacity: 1;
-            filter: none;
+        @media (max-width: 520px) {
+            .card {
+                padding: 28px 22px;
+                border-radius: 16px;
+            }
+
+            .links {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="terminal-box">
+    <main class="card">
 
-        <div class="terminal-header">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+        <div class="top">
+            <div class="avatar">a</div>
+
+            <div>
+                <h1>aly</h1>
+                <div class="meta">he/him · aly.bar</div>
+            </div>
         </div>
 
-        <h1>aly</h1>
-        <div class="meta-line">he/him</div>
-        
         <p class="bio">
             hi im aly! i like roblox revivals and i run a revival.
         </p>
-        
-        <div class="nav-links">
-            <a href="https://dualblox.xyz" target="_blank">dualblox</a> &middot; 
-            <a href="https://discord.com" target="_blank">discord</a> &middot; 
-            <a href="mailto:simultaneouses@waifu.club">email</a>
-            <a href="https://cdn.discordapp.com/attachments/1532071082981462148/1555974428595068938/Screen_Recording_2026-10-02_at_8.26.33_PM.mov?backend=b2&ex=6ac716dc&is=6ac5c55c&hm=8e4bab7608f7f012e85f42d0e20fc4bdb12c357dff4efb6ea85d23e78cdfb2b8&">comrbx nuke</a>
+
+        <div class="links">
+            <a href="https://dualblox.xyz" target="_blank">Dualblox</a>
+
+            <a href="https://discord.com" target="_blank">Discord</a>
+
+            <a href="mailto:simultaneouses@waifu.club">Email</a>
+
+            <a href="https://cdn.discordapp.com/attachments/1532071082981462148/1555974428595068938/Screen_Recording_2026-10-02_at_8.26.33_PM.mov?backend=b2&ex=6ac716dc&is=6ac5c55c&hm=8e4bab7608f7f012e85f42d0e20fc4bdb12c357dff4efb6ea85d23e78cdfb2b8&">
+                comRBX nuked 10/2/26
+            </a>
         </div>
 
+        <div class="badges-title">friends / sites</div>
+
         <div class="badge-container">
-            <a href="https://aly.bar"><img src="https://aly.bar/button.png" alt="aly"></a>
-            <a href="https://mikuna.lol" target="_blank"><img src="https://aly.bar/crexxbutto.png" alt="crexx"></a>
-            <a href="https://sansy.shop" target="_blank"><img src="https://aly.bar/sansybutton.png" alt="sansy"></a>
-            <a href="https://ralsei.sbs" target="_blank"><img src="https://aly.bar/ralseibutton.png" alt="ralsei"></a>
-            <a href="https://meloro.cc.cd"><img src="https://aly.bar/melorobutton.png" alt="meloro"></a>
-            <a href="https://discord.gg/rblxrev"><img src="https://aly.bar/tsrbutton.png" alt="tsr"></a>
-            <a href="#"><img src="https://anlucas.neocities.org/macmade-wht.gif" alt="madewithmac"></a>
+
+            <a href="https://aly.bar">
+                <img src="https://aly.bar/button.png" alt="aly">
+            </a>
+
+            <a href="https://mikuna.lol" target="_blank">
+                <img src="https://aly.bar/crexxbutto.png" alt="crexx">
+            </a>
+
+            <a href="https://sansy.shop" target="_blank">
+                <img src="https://aly.bar/sansybutton.png" alt="sansy">
+            </a>
+
+            <a href="https://ralsei.sbs" target="_blank">
+                <img src="https://aly.bar/ralseibutton.png" alt="ralsei">
+            </a>
+
+            <a href="https://meloro.cc.cd">
+                <img src="https://aly.bar/melorobutton.png" alt="meloro">
+            </a>
+
+            <a href="https://discord.gg/rblxrev">
+                <img src="https://aly.bar/tsrbutton.png" alt="tsr">
+            </a>
+
+            <a href="#">
+                <img src="https://anlucas.neocities.org/macmade-wht.gif" alt="madewithmac">
+            </a>
+
         </div>
-    </div>
+
+    </main>
 
 </body>
 </html>
